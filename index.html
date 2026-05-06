@@ -546,20 +546,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1198497992259042');
 fbq('track', 'PageView');
-
-// SHA-256 Hashing Function
-async function hashValue(val) {
-  const enc = new TextEncoder();
-  const buf = await crypto.subtle.digest('SHA-256', enc.encode(val.toLowerCase().trim()));
-  return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2, '0')).join('');
-}
-
-// Set Hashed User Data
-(async () => {
-  const em = await hashValue('email@email.com');
-  const ph = await hashValue('1234567890');
-  fbq('setUserData', { em, ph });
-})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
