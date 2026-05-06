@@ -533,8 +533,7 @@
   .inline-img { max-width: 75%; height: auto; display: block; margin: 0 auto 16px; border-radius: 12px; }
 
 </style>
-
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code with Proper Event Data -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -546,12 +545,72 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1198497992259042');
 fbq('track', 'PageView');
+
+// SHA-256 Hashing Function
+async function hashValue(val) {
+  const enc = new TextEncoder();
+  const buf = await crypto.subtle.digest('SHA-256', enc.encode(val.toLowerCase().trim()));
+  return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+// Set Hashed User Data
+(async () => {
+  const em = await hashValue('email@email.com');
+  const ph = await hashValue('1234567890');
+  fbq('setUserData', { em, ph });
+})();
+
+// Test Events - Copy paste ye aur try karo
+function testAddToCart() {
+  fbq('track', 'AddToCart', {
+    content_name: 'Test Product',
+    content_type: 'product',
+    content_ids: ['123'],
+    value: 1000,
+    currency: 'INR'
+  });
+  console.log('✅ AddToCart Event Sent');
+}
+
+function testPurchase() {
+  fbq('track', 'Purchase', {
+    value: 5000,
+    currency: 'INR',
+    content_name: 'Test Order',
+    content_type: 'product'
+  });
+  console.log('✅ Purchase Event Sent');
+}
+
+function testLead() {
+  fbq('track', 'Lead', {
+    content_name: 'Test Lead',
+    value: 0,
+    currency: 'INR'
+  });
+  console.log('✅ Lead Event Sent');
+}
 </script>
+
+<!-- Test Buttons -->
+<div style="padding: 20px; background: #f0f0f0; margin: 20px; border-radius: 10px;">
+  <h3>🧪 Test Events</h3>
+  <button onclick="testAddToCart()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+    Test AddToCart
+  </button>
+  <button onclick="testPurchase()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+    Test Purchase
+  </button>
+  <button onclick="testLead()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+    Test Lead
+  </button>
+  <p style="color: #666; font-size: 12px;">👉 Button click karo aur Events Manager me dekho</p>
+</div>
+
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-
 </head>
 <body>
 
