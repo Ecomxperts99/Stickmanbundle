@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d0d;
-    --surface: #141414;
-    --surface2: #1c1c1c;
-    --border: #2a2a2a;
-    --accent: #e8b84b;
-    --accent2: #c9943a;
-    --accent-light: #f5d47e;
-    --red: #e05252;
-    --green: #4caf50;
-    --text: #f0ece4;
-    --text-muted: #9a9289;
-    --white: #ffffff;
+    /* ─── LIGHT THEME ─── */
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface2: #f7f7f9;
+    --border: #e5e5ea;
+    --accent: #c9943a;
+    --accent2: #a67a26;
+    --accent-light: #e8b84b;
+    --red: #e53935;
+    --red-dark: #b71c1c;
+    --green: #2e7d32;
+    --text: #1a1a1a;
+    --text-muted: #6b6b73;
+    --white: #0d0d0d;   /* used for headings — now dark on light bg */
     --font-head: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
   }
@@ -30,7 +29,7 @@
   html { font-size: 62.5%; scroll-behavior: smooth; }
   body {
     font-family: var(--font-body);
-    background: var(--bg);
+    background: #ffffff;
     color: var(--text);
     font-size: 1.6rem;
     line-height: 1.65;
@@ -40,7 +39,7 @@
   /* ─── ANNOUNCEMENT BAR ─── */
   .announce-bar {
     background: var(--accent);
-    color: #0d0d0d;
+    color: #ffffff;
     text-align: center;
     padding: 10px 20px;
     font-weight: 700;
@@ -50,13 +49,14 @@
 
   /* ─── HEADER ─── */
   header {
-    background: var(--surface);
+    background: #ffffff;
     border-bottom: 1px solid var(--border);
     padding: 14px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .logo { font-family: var(--font-head); font-size: 2.2rem; color: var(--accent); font-weight: 900; letter-spacing: -.01em; }
   nav a { color: var(--text-muted); text-decoration: none; font-size: 1.4rem; font-weight: 500; margin-left: 28px; transition: color .2s; }
@@ -67,7 +67,7 @@
 
   /* ─── SECOND ANNOUNCE ─── */
   .sub-announce {
-    background: #0d0d0d;
+    background: #fafafa;
     border-bottom: 1px solid var(--border);
     text-align: center;
     padding: 8px 20px;
@@ -82,7 +82,7 @@
   /* ─── PRODUCT HERO ─── */
   .product-hero {
     padding: 60px 0 40px;
-    background: var(--surface);
+    background: #ffffff;
   }
   .product-grid {
     display: grid;
@@ -96,25 +96,22 @@
     nav { display: none; }
   }
 
-  /* Product Image — sticky on desktop only */
   .product-image-wrap {
     position: sticky;
     top: 80px;
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
   }
-  /* FIX: remove sticky behaviour on mobile */
   @media(max-width:768px){
-    .product-image-wrap {
-      position: static;
-      top: auto;
-    }
+    .product-image-wrap { position: static; top: auto; }
   }
   .product-image-wrap img { width: 100%; height: auto; display: block; }
 
   /* Product Info */
-  .stars { color: #7b6cf6; font-size: 2.2rem; }
+  .stars { color: #f5b301; font-size: 2.2rem; }
   .review-line { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .review-text { font-size: 1.4rem; color: var(--text-muted); }
   .review-text strong { color: var(--text); }
@@ -124,22 +121,21 @@
     font-size: 3.2rem;
     font-weight: 900;
     line-height: 1.2;
-    color: var(--white);
+    color: #0d0d0d;
     margin-bottom: 20px;
   }
   @media(max-width:768px){ .product-title { font-size: 2.4rem; } }
 
   .price-row { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
-  .price-sale { font-size: 2.8rem; font-weight: 700; color: var(--accent); }
+  .price-sale { font-size: 2.8rem; font-weight: 700; color: var(--red); }
   .price-original { font-size: 1.8rem; text-decoration: line-through; color: var(--text-muted); }
   .badge-sale {
-    background: var(--accent); color: #0d0d0d;
+    background: var(--red); color: #fff;
     padding: 4px 12px; border-radius: 40px;
     font-size: 1.2rem; font-weight: 700; letter-spacing: .05em;
   }
   .shipping-note { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 20px; }
 
-  /* Viewer count */
   .viewer-count {
     display: flex; align-items: center; gap: 8px;
     font-size: 1.3rem; font-weight: 600; color: var(--text-muted);
@@ -147,28 +143,28 @@
   }
   .pulse-dot {
     width: 10px; height: 10px; border-radius: 50%;
-    background: #a58eff;
+    background: var(--red);
     animation: pulse 1.5s infinite;
     display: inline-block; flex-shrink: 0;
   }
   @keyframes pulse {
-    0%{ transform:scale(1); box-shadow: 0 0 0 0 rgba(165,142,255,.6); }
-    70%{ transform:scale(1.2); box-shadow: 0 0 0 6px rgba(165,142,255,0); }
-    100%{ transform:scale(1); box-shadow: 0 0 0 0 rgba(165,142,255,0); }
+    0%{ transform:scale(1); box-shadow: 0 0 0 0 rgba(229,57,53,.6); }
+    70%{ transform:scale(1.2); box-shadow: 0 0 0 6px rgba(229,57,53,0); }
+    100%{ transform:scale(1); box-shadow: 0 0 0 0 rgba(229,57,53,0); }
   }
   .divider { border: none; border-top: 1px solid var(--border); margin: 8px 0 20px; }
 
   /* Order bump */
   .order-bump {
-    background: var(--surface2);
-    border: 1px solid #2e3a2e;
+    background: #f4faf4;
+    border: 1px solid #cfe6cf;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 24px;
   }
   .order-bump-inner { display: flex; align-items: flex-start; gap: 14px; }
   .order-bump input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--green); flex-shrink: 0; margin-top: 4px; cursor: pointer; }
-  .order-bump-headline { font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .order-bump-headline { font-size: 1.5rem; font-weight: 700; color: #0d0d0d; margin-bottom: 12px; }
   .order-bump-details { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
   .order-bump-img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
   .order-bump-product-name { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
@@ -179,11 +175,38 @@
   .ob-badge { background: #fee2e2; color: #ef4444; font-size: 1.1rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
   .ob-note { font-size: 1.1rem; color: var(--text-muted); }
 
-  /* Buttons */
+  /* ─── RED SHAKER BUY BUTTONS ─── */
+  @keyframes shaker {
+    0%, 100% { transform: translateX(0) rotate(0); }
+    10% { transform: translateX(-4px) rotate(-1deg); }
+    20% { transform: translateX(4px) rotate(1deg); }
+    30% { transform: translateX(-3px) rotate(-1deg); }
+    40% { transform: translateX(3px) rotate(1deg); }
+    50% { transform: translateX(-2px) rotate(0); }
+    60% { transform: translateX(2px) rotate(0); }
+    70% { transform: translateX(-1px) rotate(0); }
+    80% { transform: translateX(1px) rotate(0); }
+    90% { transform: translateX(0) rotate(0); }
+  }
+  @keyframes redGlow {
+    0%, 100% { box-shadow: 0 4px 14px rgba(229,57,53,0.4); }
+    50% { box-shadow: 0 6px 22px rgba(229,57,53,0.7); }
+  }
+
+  .btn-primary, .cta-btn, .mobile-sticky a {
+    background: var(--red) !important;
+    color: #ffffff !important;
+    animation: shaker 2.5s ease-in-out infinite, redGlow 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .btn-primary:hover, .cta-btn:hover, .mobile-sticky a:hover {
+    background: var(--red-dark) !important;
+    animation-play-state: paused;
+    transform: translateY(-2px) scale(1.03);
+  }
+
   .btn-primary {
     display: block; width: 100%;
-    background: var(--accent);
-    color: #0d0d0d;
     border: none; border-radius: 50px;
     padding: 18px 24px;
     font-family: var(--font-body);
@@ -195,12 +218,11 @@
     margin-bottom: 12px;
     letter-spacing: .01em;
   }
-  .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
   .btn-secondary {
     display: block; width: 100%;
     background: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
+    color: var(--red);
+    border: 2px solid var(--red);
     border-radius: 50px;
     padding: 16px 24px;
     font-family: var(--font-body);
@@ -211,7 +233,7 @@
     transition: all .2s;
     margin-bottom: 20px;
   }
-  .btn-secondary:hover { background: var(--accent); color: #0d0d0d; }
+  .btn-secondary:hover { background: var(--red); color: #fff; }
 
   /* Trust icons */
   .trust-icons { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
@@ -233,22 +255,22 @@
     margin: 8px 0;
   }
 
-  /* ─── SECTION COMMON ─── */
-  .section { padding: 48px 0; }
-  .section-dark { background: var(--surface); }
-  .section-black { background: #000; }
+  /* ─── SECTIONS ─── */
+  .section { padding: 48px 0; background: #ffffff; }
+  .section-dark { background: #fafafa; }
+  .section-black { background: #f4f4f6; }
   .section-title {
     font-family: var(--font-head);
     font-size: 3.2rem;
     font-weight: 900;
     text-align: center;
-    color: var(--white);
+    color: #0d0d0d;
     margin-bottom: 36px;
     line-height: 1.2;
   }
   @media(max-width:768px){ .section-title { font-size: 2.2rem; } }
 
-  /* ─── SAMPLE REELS ─── */
+  /* Sample Reels */
   .reels-slider-outer { position: relative; }
   .reels-slider {
     display: flex; gap: 16px;
@@ -264,17 +286,19 @@
     background: var(--surface2);
     border: 1px solid var(--border);
     position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   @media(max-width:989px){ .reel-card { width: calc((100% - 32px) / 3); } }
   @media(max-width:749px){ .reel-card { width: calc(100% - 50px); } }
   .reel-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .slider-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,.9); border: none;
+    background: #fff; border: 1px solid var(--border);
     width: 44px; height: 44px; border-radius: 50%;
     cursor: pointer; display: flex; align-items: center; justify-content: center;
     z-index: 2; font-size: 1.8rem; font-weight: 700; color: #000;
     transition: all .2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
   .slider-arrow:hover { transform: translateY(-50%) scale(1.1); }
   .slider-prev { left: -22px; }
@@ -282,9 +306,9 @@
   @media(max-width:989px){ .slider-arrow { display: none; } }
   .dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all .3s; padding: 0; }
-  .dot.active { background: var(--accent); transform: scale(1.2); }
+  .dot.active { background: var(--red); transform: scale(1.2); }
 
-  /* ─── SOCIAL PROOF SCREENSHOTS ─── */
+  /* Screenshots */
   .screenshots-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -297,29 +321,23 @@
     border: 1px solid var(--border);
     aspect-ratio: 9/16;
     background: var(--surface2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   .screenshot-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* ─── RICH TEXT SECTION ─── */
-  .rich-text-section {
-    text-align: center; padding: 40px 0 10px;
-  }
+  /* Rich text */
+  .rich-text-section { text-align: center; padding: 40px 0 10px; background:#fff; }
   .rich-text-section h2 {
     font-family: var(--font-head);
     font-size: 2.8rem; font-weight: 900;
-    color: var(--white); line-height: 1.3;
+    color: #0d0d0d; line-height: 1.3;
     max-width: 800px; margin: 0 auto;
   }
   @media(max-width:768px){ .rich-text-section h2 { font-size: 2rem; } }
 
-  /* ─── TIMER BLOCK ─── */
-  .timer-block {
-    text-align: center; padding: 20px 0 0;
-  }
-  .timer-inner {
-    display: inline-flex; align-items: baseline;
-    gap: 20px;
-  }
+  /* Timer */
+  .timer-block { text-align: center; padding: 20px 0 0; background:#fff; }
+  .timer-inner { display: inline-flex; align-items: baseline; gap: 20px; }
   .timer-unit { text-align: center; }
   .timer-num {
     font-family: var(--font-head);
@@ -329,7 +347,7 @@
   .timer-label { font-size: 1.3rem; font-weight: 700; color: var(--text-muted); margin-top: 4px; }
   .timer-sep { font-size: 3.2rem; font-weight: 900; color: var(--red); }
 
-  /* ─── WHO SHOULD USE ─── */
+  /* Cards Grid */
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -338,18 +356,19 @@
   @media(max-width:989px){ .cards-grid { grid-template-columns: repeat(2, 1fr); } }
   @media(max-width:749px){ .cards-grid { grid-template-columns: 1fr 1fr; } }
   .who-card {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 16px; padding: 28px 20px;
     text-align: center;
-    transition: border-color .2s, transform .2s;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
-  .who-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .who-card:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
   .who-card .card-emoji { font-size: 4rem; margin-bottom: 12px; display: block; }
-  .who-card h3 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .who-card h3 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: #0d0d0d; margin-bottom: 8px; }
   .who-card p { font-size: 1.4rem; color: var(--text-muted); line-height: 1.5; }
 
-  /* ─── WHERE TO POST ─── */
+  /* Platforms */
   .platforms-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -358,53 +377,53 @@
   @media(max-width:989px){ .platforms-grid { grid-template-columns: repeat(3, 1fr); } }
   @media(max-width:749px){ .platforms-grid { grid-template-columns: repeat(3, 1fr); } }
   .platform-item {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 16px; padding: 20px 10px;
     font-size: 4rem;
-    transition: border-color .2s, transform .2s;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
-  .platform-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .platform-item:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 6px 14px rgba(0,0,0,0.08); }
   .platform-name { font-size: 1.2rem; color: var(--text-muted); font-weight: 600; margin-top: 8px; }
 
-  /* ─── HOW TO EARN ─── */
-  .earn-layout {
-    display: flex; align-items: center; justify-content: center;
-    gap: 24px; flex-wrap: wrap;
-  }
+  /* Earn */
+  .earn-layout { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
   .earn-col { flex: 1; min-width: 180px; }
   .earn-item {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px; padding: 16px 20px;
     font-size: 1.5rem; font-weight: 600;
     color: var(--text); margin-bottom: 12px;
     text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .earn-center-img { flex: 0 0 240px; }
   .earn-center-img img { width: 100%; border-radius: 12px; }
 
-  /* ─── STEPS ─── */
+  /* Steps */
   .steps-list { max-width: 600px; margin: 0 auto; }
   .step-item {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px; padding: 20px 24px;
     margin-bottom: 16px;
-    font-size: 1.6rem; font-weight: 700; color: var(--white);
+    font-size: 1.6rem; font-weight: 700; color: #0d0d0d;
     display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .step-num {
     width: 36px; height: 36px; border-radius: 50%;
-    background: var(--accent); color: #0d0d0d;
+    background: var(--red); color: #fff;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.4rem; font-weight: 900; flex-shrink: 0;
   }
 
-  /* ─── BONUS GRID ─── */
+  /* Bonus */
   .bonus-header { text-align: center; margin-bottom: 36px; }
   .bonus-eyebrow { font-size: 1.4rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
-  .bonus-subhead { font-family: var(--font-head); font-size: 2.6rem; font-weight: 900; color: var(--accent); }
+  .bonus-subhead { font-family: var(--font-head); font-size: 2.6rem; font-weight: 900; color: var(--red); }
   .bonus-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -413,19 +432,20 @@
   @media(max-width:989px){ .bonus-grid { grid-template-columns: repeat(2, 1fr); } }
   @media(max-width:749px){ .bonus-grid { grid-template-columns: 1fr; } }
   .bonus-card {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px; overflow: hidden;
-    transition: transform .2s, border-color .2s;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
-  .bonus-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .bonus-card:hover { transform: translateY(-4px); border-color: var(--red); box-shadow: 0 8px 22px rgba(0,0,0,0.1); }
   .bonus-badge {
-    background: var(--accent); color: #0d0d0d;
+    background: var(--red); color: #fff;
     padding: 8px 14px; text-align: center;
     font-weight: 700; font-size: 1.3rem;
     text-transform: uppercase; letter-spacing: .05em;
   }
-  .bonus-img-wrap { width: 100%; aspect-ratio: 1; background: var(--surface); overflow: hidden; }
+  .bonus-img-wrap { width: 100%; aspect-ratio: 1; background: var(--surface2); overflow: hidden; }
   .bonus-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .bonus-title {
     padding: 16px; text-align: center;
@@ -433,20 +453,21 @@
     color: var(--text); line-height: 1.4;
   }
 
-  /* ─── FAQ ─── */
+  /* FAQ */
   .faq-list { max-width: 800px; margin: 0 auto; }
   details {
-    background: var(--surface2);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px; margin-bottom: 12px;
     overflow: hidden;
     transition: border-color .2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
-  details[open] { border-color: var(--accent); }
+  details[open] { border-color: var(--red); }
   summary {
     padding: 20px 24px; cursor: pointer;
     display: flex; align-items: center; justify-content: space-between;
-    font-size: 1.5rem; font-weight: 600; color: var(--white);
+    font-size: 1.5rem; font-weight: 600; color: #0d0d0d;
     list-style: none;
   }
   summary::-webkit-details-marker { display: none; }
@@ -454,11 +475,11 @@
   details[open] .faq-arrow { transform: rotate(180deg); }
   .faq-body { padding: 0 24px 20px; font-size: 1.4rem; color: var(--text-muted); line-height: 1.6; }
   .faq-body strong { color: var(--text); }
-  .faq-body em { color: var(--accent); }
+  .faq-body em { color: var(--red); }
 
-  /* ─── CTA SECTION ─── */
+  /* CTA section */
   .cta-section {
-    background: linear-gradient(135deg, #1a1500 0%, #0d0d0d 100%);
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
     border-top: 1px solid var(--border);
     text-align: center; padding: 60px 0;
   }
@@ -466,23 +487,16 @@
   .cta-sub { font-size: 1.6rem; color: var(--text-muted); margin-bottom: 32px; }
   .cta-btn {
     display: inline-block;
-    background: var(--accent); color: #0d0d0d;
     border-radius: 50px; padding: 20px 48px;
     font-size: 2rem; font-weight: 700;
     text-decoration: none;
     transition: background .2s, transform .15s;
+    border: none;
   }
-  .cta-btn:hover { background: var(--accent-light); transform: translateY(-3px); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-  }
-  .footer-top {
-    padding: 40px 0 30px;
-    text-align: center;
-  }
+  /* Footer */
+  footer { background: #fafafa; border-top: 1px solid var(--border); }
+  .footer-top { padding: 40px 0 30px; text-align: center; }
   .footer-logo { font-family: var(--font-head); font-size: 2.4rem; color: var(--accent); font-weight: 900; margin-bottom: 16px; }
   .footer-copy { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 8px; }
   .footer-disclaimer { font-size: 1.2rem; color: var(--text-muted); max-width: 900px; margin: 16px auto 0; line-height: 1.6; }
@@ -496,43 +510,42 @@
   }
   .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
   .footer-links a { color: var(--text-muted); text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: var(--accent); }
+  .footer-links a:hover { color: var(--red); }
 
-  /* ─── SCROLLTOP ─── */
+  /* Back to top */
   .back-top {
     position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    background: var(--accent); color: #0d0d0d;
+    background: var(--red); color: #fff;
     width: 44px; height: 44px; border-radius: 50%; border: none;
     font-size: 2rem; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: transform .2s, opacity .2s;
     opacity: 0; pointer-events: none;
+    box-shadow: 0 4px 12px rgba(229,57,53,0.4);
   }
   .back-top.visible { opacity: 1; pointer-events: auto; }
   .back-top:hover { transform: scale(1.1); }
 
-  /* ─── MOBILE STICKY BUY ─── */
+  /* Mobile sticky buy */
   .mobile-sticky {
     display: none;
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
-    background: var(--surface); border-top: 1px solid var(--border);
+    background: #ffffff; border-top: 1px solid var(--border);
     padding: 12px 20px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
   }
   @media(max-width:768px){ .mobile-sticky { display: block; } }
   .mobile-sticky a {
     display: block; text-align: center;
-    background: var(--accent); color: #0d0d0d;
     border-radius: 50px; padding: 14px;
     font-size: 1.6rem; font-weight: 700;
     text-decoration: none;
   }
 
-  /* small helpers */
   .text-center { text-align: center; }
   .mb-0 { margin-bottom: 0; }
   .mt-8 { margin-top: 8px; }
   .inline-img { max-width: 75%; height: auto; display: block; margin: 0 auto 16px; border-radius: 12px; }
-
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -550,14 +563,11 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
-<!-- ═══ ANNOUNCE BAR ═══ -->
 <div class="announce-bar">🔥 Limited Time Offer – Save Flat 75% Today! 🔥</div>
 
-<!-- ═══ HEADER ═══ -->
 <header>
   <div class="logo">Ecom Xperts</div>
   <nav>
@@ -572,22 +582,17 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </header>
 
-<!-- ═══ SUB ANNOUNCE ═══ -->
 <div class="sub-announce"><strong>Ready to Post • Instant Access • Limited Time Price ₹99</strong></div>
 
-<!-- ═══ PRODUCT HERO ═══ -->
-<div class="product-hero section-dark">
+<div class="product-hero">
   <div class="page-width">
     <div class="product-grid">
 
-      <!-- LEFT: Image -->
       <div class="product-image-wrap">
         <img src="https://thedigitalplay.store/cdn/shop/files/ChatGPTImageFeb18_2026_03_07_49PM.png?v=1491407628&width=900" alt="2300+ Stickman Reels Bundle">
       </div>
 
-      <!-- RIGHT: Info -->
       <div>
-        <!-- Reviews -->
         <div class="review-line">
           <span class="stars">★★★★★</span>
           <span class="review-text"><strong>Excellent</strong> 4.8 | <strong>4000+</strong> Reviews</span>
@@ -595,7 +600,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
 
         <h1 class="product-title">Get The 2300+ Stickman Reels Bundle Today!!</h1>
 
-        <!-- Price -->
         <div class="price-row">
           <span class="price-sale">Rs. 99.00</span>
           <s class="price-original">Rs. 1,500.00</s>
@@ -603,14 +607,12 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
         </div>
         <p class="shipping-note">Shipping calculated at checkout.</p>
 
-        <!-- Viewer count -->
         <div class="viewer-count">
           <span class="pulse-dot"></span>
           <span><strong id="viewerNumber">211</strong> people are currently looking at this</span>
         </div>
         <hr class="divider">
 
-        <!-- Order Bump -->
         <div class="order-bump">
           <div class="order-bump-headline">✅ Add 1000+ AI Gentle Giant Reels — Expand Your Content Library</div>
           <div class="order-bump-inner">
@@ -635,21 +637,17 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
           </div>
         </div>
 
-        <!-- Countdown -->
         <div class="countdown-wrap">Offer Ends In: <span id="heroCountdown">10:00</span></div>
 
-        <!-- Buttons -->
         <a href="https://superprofile.bio/vp/stickman-reels-bundle-447" class="btn-primary" id="heroBuyBtn">Buy it now →</a>
         <a href="https://superprofile.bio/vp/stickman-reels-bundle-447" class="btn-secondary">Add to cart</a>
 
-        <!-- Trust -->
         <div class="trust-icons">
           <div class="trust-item"><span class="trust-icon">⚡</span> Instant Delivery</div>
           <div class="trust-item"><span class="trust-icon">🏆</span> Premium Quality</div>
           <div class="trust-item"><span class="trust-icon">©️</span> Copyright Free</div>
         </div>
 
-        <!-- Description -->
         <div class="product-desc mt-8">
           <p><strong>2300+ Viral Stickman Reels (Ready-to-Post)</strong></p>
           <p>✅ <strong>100% Copyright-Free</strong> – Post anywhere without restrictions</p>
@@ -666,7 +664,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- ═══ SAMPLE REELS ═══ -->
 <section class="section">
   <div class="page-width">
     <h2 class="section-title">Sample Reels</h2>
@@ -686,7 +683,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ SOCIAL PROOF SCREENSHOTS ═══ -->
 <section class="section section-dark">
   <div class="page-width">
     <h2 class="section-title">See How Stickman Videos Boost Your Theme Page Fast!</h2>
@@ -700,14 +696,12 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ RICH TEXT ═══ -->
 <section class="rich-text-section">
   <div class="page-width">
     <h2>These 2300+ Stickman Videos designed to help you attract more views, grow your page, and increase audience engagement — ready to post.</h2>
   </div>
 </section>
 
-<!-- ═══ TIMER 1 ═══ -->
 <div class="timer-block">
   <div class="timer-inner">
     <div class="timer-unit"><span class="timer-num" id="t1h">00</span><div class="timer-label">Hours</div></div>
@@ -718,14 +712,12 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- ═══ BUY CTA 1 ═══ -->
 <section class="section">
   <div class="page-width text-center">
     <a href="https://superprofile.bio/vp/stickman-reels-bundle-447" class="cta-btn">⚡ Buy It Now — Only ₹99</a>
   </div>
 </section>
 
-<!-- ═══ WHO SHOULD USE ═══ -->
 <section class="section section-dark">
   <div class="page-width">
     <h2 class="section-title">Who Should Use These Reels?</h2>
@@ -740,7 +732,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ WHERE TO POST ═══ -->
 <section class="section">
   <div class="page-width">
     <h2 class="section-title">Where Can I Post These Reels?</h2>
@@ -755,7 +746,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ HOW TO EARN ═══ -->
 <section class="section section-dark">
   <div class="page-width">
     <h2 class="section-title">How Can I Make Money By Posting These Reels?</h2>
@@ -777,7 +767,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ STEPS ═══ -->
 <section class="section">
   <div class="page-width">
     <h2 class="section-title">Create Your Theme Page in Simple Steps!</h2>
@@ -789,7 +778,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ BUY CTA 2 ═══ -->
 <div class="timer-block">
   <div class="timer-inner">
     <div class="timer-unit"><span class="timer-num" id="t2h">00</span><div class="timer-label">Hours</div></div>
@@ -805,7 +793,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ BONUS GRID ═══ -->
 <section class="section section-black">
   <div class="page-width">
     <div class="bonus-header">
@@ -847,7 +834,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ LIFETIME ACCESS ═══ -->
 <section class="section">
   <div class="page-width">
     <h2 class="section-title">Lifetime Access to Everything</h2>
@@ -866,7 +852,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ FAQ ═══ -->
 <section class="section section-dark">
   <div class="page-width">
     <h2 class="section-title">FAQ [Everything You Need to Know]</h2>
@@ -895,7 +880,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ═══ FINAL CTA ═══ -->
 <div class="cta-section">
   <div class="page-width">
     <h2 class="section-title">Ready to Go Viral?</h2>
@@ -904,7 +888,6 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="page-width footer-top">
     <div class="footer-logo">Ecom Xperts</div>
@@ -923,16 +906,13 @@ src="https://www.facebook.com/tr?id=1198497992259042&ev=PageView&noscript=1"
   </div>
 </footer>
 
-<!-- Mobile sticky buy button -->
 <div class="mobile-sticky">
   <a href="https://superprofile.bio/vp/stickman-reels-bundle-447">⚡ Buy Now — Only ₹99</a>
 </div>
 
-<!-- Back to top -->
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-// ── Viewer counter ──
 function updateViewer(){
   var el = document.getElementById('viewerNumber');
   var n = parseInt(el.textContent);
@@ -941,46 +921,31 @@ function updateViewer(){
 }
 setInterval(updateViewer, 4000);
 
-// ── Countdown timers (shared 10min countdown) ──
 var remaining = 10 * 60;
-var timerIds = [
-  ['t1h','t1m','t1s'],
-  ['t2h','t2m','t2s'],
-  ['t3h','t3m','t3s'],
-];
+var timerIds = [['t1h','t1m','t1s'],['t2h','t2m','t2s'],['t3h','t3m','t3s']];
 var heroRemain = 10 * 60;
-
 function pad(n){ return (n<10?'0':'')+n; }
-
 function renderTimers(sec){
-  var h = Math.floor(sec/3600);
-  var m = Math.floor((sec%3600)/60);
-  var s = sec%60;
+  var h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
   timerIds.forEach(function(ids){
-    var eh = document.getElementById(ids[0]);
-    var em = document.getElementById(ids[1]);
-    var es = document.getElementById(ids[2]);
+    var eh = document.getElementById(ids[0]), em = document.getElementById(ids[1]), es = document.getElementById(ids[2]);
     if(eh) eh.textContent = pad(h);
     if(em) em.textContent = pad(m);
     if(es) es.textContent = pad(s);
   });
 }
-
 function renderHero(sec){
   var m = Math.floor(sec/60), s = sec%60;
   var el = document.getElementById('heroCountdown');
   if(el) el.textContent = pad(m)+':'+pad(s);
 }
-
 renderTimers(remaining);
 renderHero(heroRemain);
-
 setInterval(function(){
   if(remaining > 0){ remaining--; renderTimers(remaining); }
   if(heroRemain > 0){ heroRemain--; renderHero(heroRemain); }
 }, 1000);
 
-// ── Slider ──
 function slideScroll(id, dir){
   var el = document.getElementById(id);
   if(!el) return;
@@ -989,14 +954,12 @@ function slideScroll(id, dir){
   el.scrollBy({left: dir * w, behavior:'smooth'});
 }
 
-// ── Back to top ──
 window.addEventListener('scroll', function(){
   var btn = document.getElementById('backTop');
   if(window.scrollY > 400){ btn.classList.add('visible'); }
   else { btn.classList.remove('visible'); }
 });
 
-// ── All buy/add-to-cart clicks → redirect ──
 document.querySelectorAll('a[href="https://superprofile.bio/vp/stickman-reels-bundle-447"]').forEach(function(btn){
   btn.addEventListener('click', function(e){
     e.preventDefault();
