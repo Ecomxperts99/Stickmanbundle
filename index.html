@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -898,15 +897,14 @@
 
   .cta-box .btn { position: relative; }
 
-  /* ===== STICKY FOOTER CTA ===== */
+  /* ===== FOOTER CTA (now scrolls with page, not fixed) ===== */
   .sticky-footer {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    position: relative;
     background: rgba(13,15,26,0.95);
     backdrop-filter: blur(16px);
     border-top: 1px solid var(--border);
-    padding: 12px 24px;
-    z-index: 1000;
+    padding: 20px 24px;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -971,7 +969,7 @@
   .site-footer {
     background: var(--bg-card);
     border-top: 1px solid var(--border-light);
-    padding: 40px 0 120px;
+    padding: 40px 0;
   }
 
   .footer-inner {
@@ -1570,17 +1568,7 @@ src="https://www.facebook.com/tr?id=1614575109906696&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- SITE FOOTER -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-copy">EcomXperts © 2026 · All Rights Reserved</div>
-    
-    </div>
-  </div>
-</footer>
-
-<!-- STICKY FOOTER CTA -->
+<!-- FOOTER CTA (now scrolls with the page instead of staying pinned) -->
 <div class="sticky-footer">
   <div class="sticky-footer-price">
     <span class="price-old">Rs. 749/-</span>
@@ -1597,6 +1585,16 @@ src="https://www.facebook.com/tr?id=1614575109906696&ev=PageView&noscript=1"
     </a>
   </div>
 </div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">EcomXperts © 2026 · All Rights Reserved</div>
+    
+    </div>
+  </div>
+</footer>
 
 <script>
 // ===== CAROUSEL =====
